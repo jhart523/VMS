@@ -1,0 +1,118 @@
+﻿@model Volunteer
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Volunteer</h2>
+            <hr />
+        </div> 
+        <div class="mb-3">
+            <label asp-for="FirstName">First Name</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="LastName">Last Name</label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Username">Username</label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Centers">Centers where volunteers prefer to work</label>
+            <input asp-for="Centers" class="form-control" />
+            <span asp-validation-for="Centers" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Skills">Skills/Interests</label>
+            <input asp-for="Skills" class="form-control" />
+            <span asp-validation-for="Skills" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Availability">Availability Times</label>
+            <input asp-for="Availability" class="form-control" />
+            <span asp-validation-for="Availability" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address">Address</label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumbers">Phone Numbers</label>
+            <input asp-for="PhoneNumbers" class="form-control" />
+            <span asp-validation-for="PhoneNumbers" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email">Email Address</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EducationalBackground">Educational Background</label>
+            <input asp-for="EducationalBackground" class="form-control" />
+            <span asp-validation-for="EducationalBackground" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Licenses">Current Licenses</label>
+            <input asp-for="Licenses" class="form-control" />
+            <span asp-validation-for="Licenses" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmergencyContactName">Emergency Contact Name</label>
+            <input asp-for="EmergencyContactName" class="form-control" />
+            <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmergencyContactPhone">Emergency Contact Home/Work Phone</label>
+            <input asp-for="EmergencyContactPhone" class="form-control" />
+            <span asp-validation-for="EmergencyContactPhone" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmergencyContactEmail">Emergency Contact Email</label>
+            <input asp-for="EmergencyContactEmail" class="form-control" />
+            <span asp-validation-for="EmergencyContactEmail" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmergencyContactAddress">Emergency Contact Address</label>
+            <input asp-for="EmergencyContactAddress" class="form-control" />
+            <span asp-validation-for="EmergencyContactAddress" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DriverLicenseOnFile">Driver's License on file?'</label>
+            <input asp-for="DriverLicenseOnFile" type="checkbox" class="form-check-input" />           
+        </div>
+        <div class="mb-3">
+            <label asp-for="SocialSecurityCardOnFile">Social Security Card on file?</label>
+            <input asp-for="SocialSecurityCardOnFile" type="checkbox" class="form-check-input" />          
+        </div>
+        <div class="mb-3">
+            <label asp-for="ApprovalStatus">Approval Status</label>
+            <select asp-for="ApprovalStatus" class="form-control">
+                <option value="Approved">Approved</option>
+                <option value="Pending Approval">Pending Approval</option>
+                <option value="Disapproved">Disapproved</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+            <a asp-controller="Volunteers" asp-action="Index" class="btn btn-primary" style="width:150px">Return to Volunteer Page</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

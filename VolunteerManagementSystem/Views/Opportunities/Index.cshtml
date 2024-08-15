@@ -1,0 +1,54 @@
+﻿@model IEnumerable<VolunteerManagementSystem.Models.Opportunity>
+
+@{
+    ViewData["Title"] = "Manage Opportunities";
+}
+
+<div class="container">
+    <h1 class="display-4 text-center">Manage Opportunities</h1>
+    <p class="lead text-center">Below is a list of all current volunteer opportunities:</p>
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-success">Add New Opportunity</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                // index is for the view to display, instead of using Id.
+                int index = 1;
+                foreach (var opportunity in Model)
+                {
+                    <tr>
+                        <th scope="row">@index</th>
+                        <td>@opportunity.Title</td>
+                        <td>@opportunity.Description</td>
+                        <td>@opportunity.Date.ToString("MM/dd/yyyy")</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@opportunity.Id" class="btn btn-sm btn-warning">Edit</a>
+                            <a asp-action="Details" asp-route-id="@opportunity.Id" class="btn btn-sm btn-info">Details</a>
+                            <a asp-action="Delete" asp-route-id="@opportunity.Id" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    index++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">No opportunities available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

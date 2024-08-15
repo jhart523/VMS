@@ -1,0 +1,74 @@
+﻿@model IEnumerable<VolunteerManagementSystem.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Volunteers";
+}
+
+<div class="container">
+    <h1 class="display-4 text-center">@ViewData["Title"]</h1>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-warning">
+            @ViewBag.Message
+        </div>
+    }
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-success">Add New Volunteer</a>
+        
+
+
+        <div class="mb-3">
+            <form method="get" asp-action="Index" class="form-inline">
+                <input type="text" name="search" class="form-control from-control sm" placeholder="Search Volunteers" />
+
+                <select name="filter" class="form-control-sm" style="width:150px">
+                    <option value ="All">All</option>
+                    <option value ="Approved/Pending Approval">Approved/Pending Approval</option>
+                    <option value ="Approved">Approved</option>
+                    <option value="Pending Approval">Pending Approval</option>
+                    <option value="Disapproved">Disapproved</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Apply Filter</button>
+            </form>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Skills</th>
+                <th>Centers</th>
+                <th>Email</th>
+                <th>Phone Numbers</th>
+                <th>Address</th>
+                <th>Approval Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var volunteer in Model)
+            {
+                <tr>
+                    <td>@volunteer.FirstName</td>
+                    <td>@volunteer.LastName</td>
+                    <td>@volunteer.Skills</td>
+                    <td>@volunteer.Centers</td>
+                    <td>@volunteer.Email</td>
+                    <td>@volunteer.PhoneNumbers</td>
+                    <td>@volunteer.Address</td>
+                    <td>@volunteer.ApprovalStatus</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@volunteer.Id" class="btn btn-sm btn-info">Edit</a>
+                        <a asp-action="Matches" asp-route-id="@volunteer.Id" class="btn btn-sm btn-success">View Matches</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
