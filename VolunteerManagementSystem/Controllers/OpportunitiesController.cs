@@ -83,7 +83,7 @@ namespace VolunteerManagementSystem.Controllers
             var matches = vol.Where(v => v.Skills.Contains(opp.Description) || v.Skills.Contains(opp.Title)
             || v.Centers.Contains(opp.Center));
 
-            // if no matches
+            // if no matches, add viewbag message that will display
             if (!matches.Any())
             {
                 ViewBag.Message = "No volunteers found.";

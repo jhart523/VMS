@@ -9,7 +9,6 @@ namespace VolunteerManagementSystem.Models.ViewModels
 
         
         [Required]
-        
         public string Password { get; set; }    
 
 
