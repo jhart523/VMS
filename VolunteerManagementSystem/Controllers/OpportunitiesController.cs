@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using VolunteerManagementSystem.Data;
 using VolunteerManagementSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace VolunteerManagementSystem.Controllers
 {
+    [Authorize]
     public class OpportunitiesController : Controller
     {
         private readonly IOpportunityRepository _opportunityRepository;

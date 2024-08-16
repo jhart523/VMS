@@ -36,7 +36,7 @@ namespace VolunteerManagementSystem.Controllers
                 {
                     await signInManager.SignOutAsync();
                     if ((await signInManager.PasswordSignInAsync(user,
-                        model.Password, false, false)).Succeeded)
+                        model.Password, isPersistent: false, false)).Succeeded)
                     {
                         return Redirect("/Admin/Index");
                     }
