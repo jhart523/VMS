@@ -39,5 +39,13 @@ namespace VolunteerManagementSystem.Controllers
             }
             return View(obj);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _opportunityRepository.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }

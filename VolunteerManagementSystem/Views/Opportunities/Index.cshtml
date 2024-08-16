@@ -36,8 +36,14 @@
                         <td>@opportunity.Date.ToString("MM/dd/yyyy")</td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@opportunity.Id" class="btn btn-sm btn-warning">Edit</a>
-                            <a asp-action="Details" asp-route-id="@opportunity.Id" class="btn btn-sm btn-info">Details</a>
-                            <a asp-action="Delete" asp-route-id="@opportunity.Id" class="btn btn-sm btn-danger">Delete</a>
+                            <a asp-action="Matches" asp-route-id="@opportunity.Id" class="btn btn-sm btn-info">View Volunteer Matches</a>
+
+                            <form asp-action="Delete" asp-route-id="@opportunity.Id" method="post" style="display:inline">                            
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Confirm Deletion?')">
+                                Delete
+                            </button>
+                            </form>
+
                         </td>
                     </tr>
                     index++;
