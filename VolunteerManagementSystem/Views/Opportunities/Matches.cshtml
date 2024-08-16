@@ -1,0 +1,33 @@
+﻿@model IEnumerable<VolunteerManagementSystem.Models.Volunteer>
+
+<h1>Volunteer Opportunity Matches</h1>
+<div class="mb-3">
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-warning">
+            @ViewBag.Message
+        </div>
+    }
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Skills</th>
+                <th>Availability</th>
+                <th>Centers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model)
+            {
+                <tr>
+                    <td>@v.FirstName</td>
+                    <td>@v.Skills</td>
+                    <td>@v.Availability</td>
+                    <td>@v.Centers</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-controller="Opportunities" asp-action="Index" class="btn btn-outline-primary" style="width:150px">Return to Opportunities Page</a>
+</div>
