@@ -8,6 +8,7 @@ namespace VolunteerManagementSystem.Controllers
     public class OpportunitiesController : Controller
     {
         private readonly IOpportunityRepository _opportunityRepository;
+        private readonly IVolunteerRepository _volunteerRepository;
         
         public OpportunitiesController(IOpportunityRepository opportunityRepository)
         {
@@ -35,6 +36,30 @@ namespace VolunteerManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 _opportunityRepository.Add(obj);
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
+        //GET
+        public IActionResult Edit(int id)
+        {
+            if(id == 0)
+            {
+                return NotFound();
+            }
+            var opp = _opportunityRepository.GetById(id);
+            return View(opp);
+        }
+
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Opportunity obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _opportunityRepository.Update(obj);
                 return RedirectToAction("Index");
             }
             return View(obj);
