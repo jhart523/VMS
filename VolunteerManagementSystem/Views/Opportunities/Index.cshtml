@@ -10,12 +10,26 @@
 
     <div class="mb-3">
         <a asp-action="Create" class="btn btn-success">Add New Opportunity</a>
+        <a asp-action="Index" class="btn btn-info">View All Opportunities</a>
     </div>
 
     <div class="mb-3">
         <form method="get" asp-action="Index" class="form-inline">
             <input type="text" name="search" class="form-control form-control-sm" placeholder="Search Opportunities..." style="width:50%"/>
             <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <div class="mb-3">
+        <form method="get" asp-action="CenterFilter" class="form-inline">
+            <select name="center" class="form-control form-control-sm" style="width:50%">
+                <option value="">Select Center</option>
+                @foreach(var center in ViewBag.Centers)
+                {
+                    <option value ="@center">@center</option>
+                }
+            </select>
+            <button type="submit" class="btn btn-primary">Filter by Center</button>
         </form>
     </div>
 
@@ -71,8 +85,7 @@
                 </tr>
             }
         </tbody>
-    </table>
-    <a asp-action="Index" class="btn btn-sm btn-primary">Return to Main View</a>
+    </table>  
     <a asp-controller="Admin" asp-action="Index" class="btn btn-sm btn-primary">Return to Admin Control Panel</a>
 
 </div>

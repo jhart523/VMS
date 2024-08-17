@@ -24,6 +24,9 @@ namespace VolunteerManagementSystem.Controllers
             // First, get all opportunities from DB
             var opportunities = _opportunityRepository.GetAll();
 
+            // Create viewbag for center filter that populates the dropdown option
+            ViewBag.Centers = opportunities.Select(o => o.Center).Distinct().ToList();
+
             // If there is a search term, filter by this term first
             if (!string.IsNullOrEmpty(search))
             {
@@ -36,18 +39,32 @@ namespace VolunteerManagementSystem.Controllers
 
         public IActionResult Recent()
         {
-            var recentTime = DateTime.Now.AddDays(-60);
             var opportunities = _opportunityRepository.GetAll();
+
+            // Create viewbag for center filter that populates the dropdown option
+            ViewBag.Centers = opportunities.Select(o => o.Center).Distinct().ToList();
+
+            var recentTime = DateTime.Now.AddDays(-60);
+            
             opportunities = opportunities.Where(o => o.Date >= recentTime).ToList();
             return View("Index", opportunities);
         }
 
-
-        public IActionResult centerFilter(string filter)
+        public IActionResult CenterFilter(string center)
         {
-            
-            return View(filter);
+            var opportunities = _opportunityRepository.GetAll();
+            opportunities = opportunities.Where(o => o.Center == center).ToList();
+
+            // Create viewbag for center filter that populates the dropdown option
+            ViewBag.Centers = opportunities.Select(o => o.Center).Distinct().ToList();
+
+
+
+            return View("Index", opportunities);
         }
+
+
+      
 
 
         //GET
