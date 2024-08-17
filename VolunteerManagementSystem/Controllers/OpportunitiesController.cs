@@ -29,10 +29,17 @@ namespace VolunteerManagementSystem.Controllers
             {
                 opportunities = opportunities.Where(o => o.Title.ToLower().Contains(search.ToLower()) || o.Description.ToLower().Contains(search.ToLower()));
             }
-            
-            
+         
             return View(opportunities);
          
+        }
+
+        public IActionResult Recent()
+        {
+            var recentTime = DateTime.Now.AddDays(-60);
+            var opportunities = _opportunityRepository.GetAll();
+            opportunities = opportunities.Where(o => o.Date >= recentTime).ToList();
+            return View("Index", opportunities);
         }
 
 
