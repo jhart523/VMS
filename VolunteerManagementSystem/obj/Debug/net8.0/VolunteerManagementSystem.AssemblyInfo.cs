@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VolunteerManagementSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16a29e84502457dba369318e3ece642fbbee9d52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06593596064134c4115a4ddbff3ee9546e43d78c")]
 [assembly: System.Reflection.AssemblyProductAttribute("VolunteerManagementSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VolunteerManagementSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -6,7 +6,7 @@
 
 <div class="container">
     <h1 class="display-4 text-center">Manage Opportunities</h1>
-    <p class="lead text-center">Below is a list of all current volunteer opportunities:</p>
+    <hr />
 
     <div class="mb-3">
         <a asp-action="Create" class="btn btn-success">Add New Opportunity</a>
@@ -39,6 +39,7 @@
         </form>
     </div>
 
+    <h3 class="bg-light">Opportunities</h3>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -86,6 +87,6 @@
             }
         </tbody>
     </table>  
-    <a asp-controller="Admin" asp-action="Index" class="btn btn-sm btn-primary">Return to Admin Control Panel</a>
+    <a asp-controller="Admin" asp-action="Index" class="btn btn-sm btn-primary">Return to Admin Dashboard</a>
 
 </div>
