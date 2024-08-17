@@ -1,18 +1,24 @@
 ﻿@model LoginViewModel
 
+
+
 <form asp-action="Login" class="mt-4 p-3 border rounded bg-light">
     <div class="mb-3">
+        <div class="row pb-2">
+            <h1 class="text-uppercase">Volunteer Management System</h1>
+            <h2 class="text-primary">Login</h2>
+        </div>
         <label asp-for="UserName" class="form-label">User Name</label>
-        <input asp-for="UserName" class="form-control"/>
+        <input asp-for="UserName" class="form-control" style="width:300px"/>
         <span asp-validation-for="UserName" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Password" class="form-label"></label>
-        <input asp-for="Password" class="form-control" type="password"/>
+        <label asp-for="Password" class="form-label" ></label>
+        <input asp-for="Password" class="form-control" type="password" style="width:300px"/>
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <input type="submit" value="Login" class="btn btn-primary" style="width:150px"/>
+        <input type="submit" value="Login" class="btn btn-success" style="width:150px"/>
     </div>
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>

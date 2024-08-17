@@ -53,12 +53,15 @@ namespace VolunteerManagementSystem.Controllers
         public IActionResult CenterFilter(string center)
         {
             var opportunities = _opportunityRepository.GetAll();
-            opportunities = opportunities.Where(o => o.Center == center).ToList();
-
             // Create viewbag for center filter that populates the dropdown option
             ViewBag.Centers = opportunities.Select(o => o.Center).Distinct().ToList();
 
 
+            if (center != "All Centers")
+            {
+                opportunities = opportunities.Where(o => o.Center == center).ToList();
+                
+            }
 
             return View("Index", opportunities);
         }

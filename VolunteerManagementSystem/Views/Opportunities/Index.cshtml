@@ -22,8 +22,8 @@
 
     <div class="mb-3">
         <form method="get" asp-action="CenterFilter" class="form-inline">
-            <select name="center" class="form-control form-control-sm" style="width:50%">
-                <option value="">Select Center</option>
+            <select name="center" class="form-control form-control-sm" style="width:25%"/>
+                <option value="All Centers">All Centers</option>
                 @foreach(var center in ViewBag.Centers)
                 {
                     <option value ="@center">@center</option>
