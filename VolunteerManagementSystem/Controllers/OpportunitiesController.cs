@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using VolunteerManagementSystem.Data;
 using VolunteerManagementSystem.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace VolunteerManagementSystem.Controllers
 {
@@ -18,11 +19,29 @@ namespace VolunteerManagementSystem.Controllers
             _volunteerRepository = volunteerRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
+            // First, get all opportunities from DB
             var opportunities = _opportunityRepository.GetAll();
+
+            // If there is a search term, filter by this term first
+            if (!string.IsNullOrEmpty(search))
+            {
+                opportunities = opportunities.Where(o => o.Title.ToLower().Contains(search.ToLower()) || o.Description.ToLower().Contains(search.ToLower()));
+            }
+            
+            
             return View(opportunities);
+         
         }
+
+
+        public IActionResult centerFilter(string filter)
+        {
+            
+            return View(filter);
+        }
+
 
         //GET
         public IActionResult Create()
@@ -82,8 +101,8 @@ namespace VolunteerManagementSystem.Controllers
             var opp = _opportunityRepository.GetById(id);
             var vol = _volunteerRepository.GetAll();
             // can add more, not sure what to compare
-            var matches = vol.Where(v => v.Skills.Contains(opp.Description) || v.Skills.Contains(opp.Title)
-            || v.Centers.Contains(opp.Center));
+            var matches = vol.Where(v => v.Skills.ToLower().Contains(opp.Description.ToLower()) || v.Skills.ToLower().Contains(opp.Title.ToLower())
+            || v.Centers.ToLower().Contains(opp.Center.ToLower()));
 
             // if no matches, add viewbag message that will display
             if (!matches.Any())
@@ -92,5 +111,7 @@ namespace VolunteerManagementSystem.Controllers
             }
             return View(matches);
         }
+
+        
     }
 }

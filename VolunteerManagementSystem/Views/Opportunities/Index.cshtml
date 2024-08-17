@@ -12,11 +12,19 @@
         <a asp-action="Create" class="btn btn-success">Add New Opportunity</a>
     </div>
 
+    <div class="mb-3">
+        <form method="get" asp-action="Index" class="form-inline">
+            <input type="text" name="search" class="form-control form-control-sm" placeholder="Search Opportunities..." style="width:50%"/>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
+                <th scope="col">Center</th>
                 <th scope="col">Description</th>
                 <th scope="col">Date</th>
                 <th scope="col">Actions</th>
@@ -32,6 +40,7 @@
                     <tr>
                         <th scope="row">@index</th>
                         <td>@opportunity.Title</td>
+                        <td>@opportunity.Center</td>
                         <td>@opportunity.Description</td>
                         <td>@opportunity.Date.ToString("MM/dd/yyyy")</td>
                         <td>
@@ -57,4 +66,7 @@
             }
         </tbody>
     </table>
+    <a asp-action="Index" class="btn btn-sm btn-primary">Return to Main View</a>
+    <a asp-controller="Admin" asp-action="Index" class="btn btn-sm btn-primary">Return to Admin Control Panel</a>
+
 </div>
